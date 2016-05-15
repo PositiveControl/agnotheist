@@ -9,15 +9,6 @@ public class User {
 	private String address;
 	private BeliefProfile beliefProfile;
 	
-	/**
-	 * Constructor
-	 * @param firstName
-	 * @param lastName
-	 * @param emailAddress
-	 * @param telephoneNumber
-	 * @param password
-	 * @param address
-	 */
 	public User(String firstName, String lastName, String emailAddress,
 			String telephoneNumber, String password, String address,
 			BeliefProfile beliefProfile) {
@@ -67,19 +58,40 @@ public class User {
 	}
 	
 	public boolean validateParams() {
-		if (firstName == null)
-			return false;
-		if (lastName == null)
-			return false;
-		if (emailAddress == null)
-			return false;
-		if (telephoneNumber == null)
-			return false;
-		if (password == null)
-			return false;
-		if (address == null)
-			return false;
+		if (firstName == null) return false;
+		if (lastName == null) return false;
+		if (emailAddress == null) return false;
+		if (telephoneNumber == null) return false;
+		if (password == null) return false;
+		if (address == null) return false;
 		
+		return true;
+	}
+	
+	public boolean equals(Object object) {
+		if (this == object) return true;
+		if (object == null) return false;
+		if (getClass() != object.getClass()) return false;
+		
+		User otherUser = (User) object;
+		
+		if (emailAddress == null && otherUser.emailAddress != null)
+			return false;
+		else if (!emailAddress.equals(otherUser.emailAddress))
+			return false;
+		if (telephoneNumber == null && otherUser.telephoneNumber != null)
+			return false;
+		else if (!telephoneNumber.equals(otherUser.telephoneNumber))
+			return false;
+		if (password == null && otherUser.password != null)
+			return false;
+		else if (!password.equals(otherUser.password))
+			return false;
+		if (address == null && otherUser.address != null)
+			return false;
+		else if (!address.equals(otherUser.address))
+			return false;
+
 		return true;
 	}
 	
