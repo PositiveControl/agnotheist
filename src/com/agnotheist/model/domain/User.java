@@ -116,4 +116,11 @@ public class User {
 		
 	}
 	
+	@Override
+	public String toString() {
+		return "User [lastName=" + lastName + ", firstName=" + firstName
+				+ ", emailAddress" + emailAddress + ", password=" + password
+				+ ", telephoneNumber=" + telephoneNumber + ", address=" + address
+				+ ", beliefProfile=" + beliefProfile + "]";
+	}
 }
