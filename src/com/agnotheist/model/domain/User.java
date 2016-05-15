@@ -96,8 +96,9 @@ public class User {
 		return true;
 	}
 	
+	@Override
 	public int hashCode() {
-		final int prime = 99;
+		final int prime = 97;
 		int result = 1;
 		
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
