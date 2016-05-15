@@ -1,4 +1,4 @@
-package domain;
+package com.agnotheist.model.domain;
 
 public class User {
 	private String firstName;
@@ -68,6 +68,7 @@ public class User {
 		return true;
 	}
 	
+	@Override
 	public boolean equals(Object object) {
 		if (this == object) return true;
 		if (object == null) return false;
@@ -93,6 +94,25 @@ public class User {
 			return false;
 
 		return true;
+	}
+	
+	public int hashCode() {
+		final int prime = 99;
+		int result = 1;
+		
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + 
+				((telephoneNumber == null) ? 0 : telephoneNumber.hashCode());
+		result = prime * result + 
+				((beliefProfile == null) ? 0 : beliefProfile.hashCode());
+		result = prime * result + 
+				((emailAddress == null) ? 0 : emailAddress.hashCode());
+		
+		return result;
+		
 	}
 	
 }
