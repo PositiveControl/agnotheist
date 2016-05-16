@@ -7,11 +7,11 @@ public class User {
 	private String telephoneNumber;
 	private String password;
 	private String address;
-	private BeliefProfile beliefProfile;
+	private Belief belief;
 	
 	public User(String firstName, String lastName, String emailAddress,
 			String telephoneNumber, String password, String address,
-			BeliefProfile beliefProfile) {
+			Belief belief) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -19,7 +19,7 @@ public class User {
 		this.telephoneNumber = telephoneNumber;
 		this.password = password;
 		this.address = address;
-		this.beliefProfile = beliefProfile;
+		this.belief = belief;
 	}
 	
 	public String getFirstName() { return firstName; }
@@ -52,9 +52,9 @@ public class User {
 		this.address = address;
 	}
 	
-	public BeliefProfile getBeliefProfile() { return beliefProfile; }
-	public void setBeliefProfile(BeliefProfile beliefProfile) {
-		this.beliefProfile = beliefProfile;
+	public Belief getBelief() { return belief; }
+	public void setBelief(Belief belief) {
+		this.belief = belief;
 	}
 	
 	public boolean validateParams() {
@@ -108,7 +108,7 @@ public class User {
 		result = prime * result + 
 				((telephoneNumber == null) ? 0 : telephoneNumber.hashCode());
 		result = prime * result + 
-				((beliefProfile == null) ? 0 : beliefProfile.hashCode());
+				((belief == null) ? 0 : belief.hashCode());
 		result = prime * result + 
 				((emailAddress == null) ? 0 : emailAddress.hashCode());
 		
@@ -121,6 +121,6 @@ public class User {
 		return "User [lastName=" + lastName + ", firstName=" + firstName
 				+ ", emailAddress" + emailAddress + ", password=" + password
 				+ ", telephoneNumber=" + telephoneNumber + ", address=" + address
-				+ ", beliefProfile=" + beliefProfile + "]";
+				+ ", belief=" + belief + "]";
 	}
 }
