@@ -1,12 +1,12 @@
 package com.agnotheist.model.domain;
 
 public class Belief {
-	private Religion religion;
+	private String religion;
 	private String beliefStatement;
 	private User user;
 	private Comment comment;
 	
-	public Belief(Religion religion, String beliefStatement, 
+	public Belief(String religion, String beliefStatement, 
 			User user, Comment comment) {
 		super();
 		this.religion = religion;
@@ -15,8 +15,8 @@ public class Belief {
 		this.comment = comment;
 	}
 	
-	public Religion getReligion() { return religion; }
-	public void setReligion(Religion religion) {
+	public String getReligion() { return religion; }
+	public void setReligion(String religion) {
 		this.religion = religion;
 	}
 	
@@ -88,6 +88,5 @@ public class Belief {
 	public String toString() {
 		return "Belief [religion=" + religion + ", " + "beliefStatement=" 
 				+ beliefStatement + "user=" + user + "comment=" + comment + "]";
-	}
-	
+	}	
 }
