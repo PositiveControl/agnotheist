@@ -57,7 +57,7 @@ public class User {
 		this.belief = belief;
 	}
 	
-	public boolean validateParams() {
+	public boolean validate() {
 		if (firstName == null) return false;
 		if (lastName == null) return false;
 		if (emailAddress == null) return false;
