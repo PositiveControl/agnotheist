@@ -4,12 +4,15 @@ public class Belief {
 	private Religion religion;
 	private String beliefStatement;
 	private User user;
+	private Comment comment;
 	
-	public Belief(Religion religion, String beliefStatement, User user) {
+	public Belief(Religion religion, String beliefStatement, 
+			User user, Comment comment) {
 		super();
 		this.religion = religion;
 		this.beliefStatement = beliefStatement;
 		this.user = user;
+		this.comment = comment;
 	}
 	
 	public Religion getReligion() { return religion; }
@@ -25,6 +28,11 @@ public class Belief {
 	public User getUser() { return user; }
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public Comment getComment() { return comment; }
+	public void setComment(Comment comment) {
+		this.comment = comment;
 	}
 	
 	public boolean validate() {
@@ -55,7 +63,11 @@ public class Belief {
 			return false;
 		else if (!user.equals(otherBelief.user))
 			return false;
-
+		if (comment == null && otherBelief.comment != null)
+			return false;
+		else if (!comment.equals(otherBelief.comment))
+			return false;
+		
 		return true;
 	}
 	
@@ -75,7 +87,7 @@ public class Belief {
 	@Override
 	public String toString() {
 		return "Belief [religion=" + religion + ", " + "beliefStatement=" 
-				+ beliefStatement + "user=" + user + "]";
+				+ beliefStatement + "user=" + user + "comment=" + comment + "]";
 	}
 	
 }
