@@ -8,7 +8,8 @@ public class BeliefTest {
 
 	@Test
 	public void testValidate() {
-		Belief belief = new Belief ("Catholic", "Killing is bad.", User, Comment);
+		User user = new User ("Joe", "Doe", "test@example.com", "123", "abc", "123 Main St.");
+		Belief belief = new Belief ("Catholic", "Killing is bad.", user);
 				
 		assertTrue("belief validates", belief.validate());
 			System.out.println("testValidate PASSED");
@@ -16,8 +17,9 @@ public class BeliefTest {
 	
 	@Test
 	public void testEqualsBelief() {
-		Belief belief1 = new Belief ("Catholic", "Killing is bad.", User, Comment);
-		Belief belief2 = new Belief ("Catholic", "Killing is bad.", User, Comment);
+		User user = new User ("Joe", "Doe", "test@example.com", "123", "abc", "123 Main St.");
+		Belief belief1 = new Belief ("Catholic", "Killing is bad.", user);
+		Belief belief2 = new Belief ("Catholic", "Killing is bad.", user);
 				
 		assertTrue("belief1 equals belief2", belief1.equals(belief2));
 			System.out.println("testEqualsComment PASSED");
@@ -25,10 +27,11 @@ public class BeliefTest {
 	
 	@Test
 	public void testNotEqualsUser() {
-		Belief belief1 = new Belief ("Catholic", "Killing is bad.", User, Comment);
-		Belief belief2 = new Belief ("Catholic", "Killing is kind of bad.", User, Comment);
+		User user = new User ("Joe", "Doe", "test@example.com", "123", "abc", "123 Main St.");
+		Belief belief1 = new Belief ("Catholic", "Killing is bad.", user);
+		Belief belief2 = new Belief ("Catholic", "Killing is kind of bad.", user);
 				
-		assertTrue("belief1 does NOT equal belief2", belief1.equals(belief2));
+		assertFalse("belief1 does NOT equal belief2", belief1.equals(belief2));
 			System.out.println("testNotEqualsBelief PASSED");
 	}
 
