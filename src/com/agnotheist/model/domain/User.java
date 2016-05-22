@@ -69,6 +69,14 @@ public class User {
 		
 		User otherUser = (User) object;
 		
+		if (firstName == null && otherUser.firstName != null)
+			return false;
+		else if (!firstName.equals(otherUser.firstName))
+			return false;
+		if (lastName == null && otherUser.lastName != null)
+			return false;
+		else if (!lastName.equals(otherUser.lastName))
+			return false;
 		if (emailAddress == null && otherUser.emailAddress != null)
 			return false;
 		else if (!emailAddress.equals(otherUser.emailAddress))
