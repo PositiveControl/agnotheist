@@ -7,11 +7,10 @@ public class User {
 	private String telephoneNumber;
 	private String password;
 	private String address;
-	private Belief belief;
 	
 	public User(String firstName, String lastName, String emailAddress,
-			String telephoneNumber, String password, String address,
-			Belief belief) {
+			String telephoneNumber, String password, String address) 
+	{
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -19,7 +18,6 @@ public class User {
 		this.telephoneNumber = telephoneNumber;
 		this.password = password;
 		this.address = address;
-		this.belief = belief;
 	}
 	
 	public String getFirstName() { return firstName; }
@@ -50,11 +48,6 @@ public class User {
 	public String getAddress() { return address; }
 	public void setAddress(String address) {
 		this.address = address;
-	}
-	
-	public Belief getBelief() { return belief; }
-	public void setBelief(Belief belief) {
-		this.belief = belief;
 	}
 	
 	public boolean validate() {
@@ -108,8 +101,6 @@ public class User {
 		result = prime * result + 
 				((telephoneNumber == null) ? 0 : telephoneNumber.hashCode());
 		result = prime * result + 
-				((belief == null) ? 0 : belief.hashCode());
-		result = prime * result + 
 				((emailAddress == null) ? 0 : emailAddress.hashCode());
 		
 		return result;
@@ -121,6 +112,6 @@ public class User {
 		return "User [lastName=" + lastName + ", firstName=" + firstName
 				+ ", emailAddress" + emailAddress + ", password=" + password
 				+ ", telephoneNumber=" + telephoneNumber + ", address=" + address
-				+ ", belief=" + belief + "]";
+				+ "]";
 	}
 }

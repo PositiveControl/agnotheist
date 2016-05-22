@@ -6,7 +6,7 @@ public class Belief {
 	private User user;
 	
 	public Belief(String religion, String beliefStatement, 
-			User user, Comment comment) {
+			User user) {
 		super();
 		this.religion = religion;
 		this.beliefStatement = beliefStatement;

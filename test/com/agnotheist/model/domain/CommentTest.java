@@ -8,7 +8,9 @@ public class CommentTest {
 
 	@Test
 	public void testValidate() {
-		Comment comment = new Comment (User, Belief, "Comment");
+		User user = new User ("Joe", "Doe", "test@example.com", "123", "abc", "123 Main St.");
+		Belief belief = new Belief ("Buddhist", "Killing is bad", user);
+		Comment comment = new Comment (user, belief, "Comment");
 				
 		assertTrue("comment validates", comment.validate());
 			System.out.println("testValidate PASSED");
@@ -16,19 +18,23 @@ public class CommentTest {
 	
 	@Test
 	public void testEqualsComment() {
-		Comment comment1 = new Comment (User, Belief, "Comment1");
-		Comment comment2 = new Comment (User, Belief, "Comment1");
+		User user = new User ("Joe", "Doe", "test@example.com", "123", "abc", "123 Main St.");
+		Belief belief = new Belief ("Buddhist", "Killing is bad", user);
+		Comment comment1 = new Comment (user, belief, "Comment1");
+		Comment comment2 = comment1;
 				
 		assertTrue("comment1 equals comment2", comment1.equals(comment2));
 			System.out.println("testEqualsComment PASSED");
 	}
 	
 	@Test
-	public void testNotEqualsUser() {
-		Comment comment1 = new Comment (User, Belief, "Comment1");
-		Comment comment2 = new Comment (User, Belief, "Comment2");
+	public void testNotEqualsComment() {
+		User user = new User ("Joe", "Doe", "test@example.com", "123", "abc", "123 Main St.");
+		Belief belief = new Belief ("Buddhist", "Killing is bad", user);
+		Comment comment1 = new Comment (user, belief, "Comment1");
+		Comment comment2 = new Comment (user, belief, "Comment2");
 				
-		assertTrue("comment1 does NOT equal comment2", comment1.equals(comment2));
+		assertFalse("comment1 does NOT equal comment2", comment1.equals(comment2));
 			System.out.println("testNotEqualsComment PASSED");
 	}
 
