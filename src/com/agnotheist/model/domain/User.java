@@ -8,6 +8,16 @@ public class User {
 	private String password;
 	private String address;
 	
+	/**
+	 * User
+	 * 
+	 * @param firstName
+	 * @param lastName
+	 * @param emailAddress
+	 * @param telephoneNumber
+	 * @param password
+	 * @param address
+	 */
 	public User(String firstName, String lastName, String emailAddress,
 			String telephoneNumber, String password, String address) 
 	{
@@ -20,31 +30,55 @@ public class User {
 		this.address = address;
 	}
 	
+	/**
+	 * 
+	 * @return the firstName
+	 */
 	public String getFirstName() { return firstName; }
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 	
+	/**
+	 * 
+	 * @return the lastName
+	 */
 	public String getLastName() { return lastName; }
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 	
+	/**
+	 * 
+	 * @return the emailAddress
+	 */
 	public String getEmailAddress() { return emailAddress; }
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
 	}
 	
+	/**
+	 * 
+	 * @return the telephoneNumber
+	 */
 	public String getTelephoneNumber() { return telephoneNumber; }
 	public void setTelephoneNumber(String telephoneNumber) {
 		this.telephoneNumber = telephoneNumber;
 	}
 	
+	/**
+	 * 
+	 * @return the password
+	 */
 	public String getPassword() { return password; }
 	public void setPassword(String password) {
 		this.password = password;
 	}
 	
+	/**
+	 * 
+	 * @return the address
+	 */
 	public String getAddress() { return address; }
 	public void setAddress(String address) {
 		this.address = address;

@@ -5,22 +5,40 @@ public class Comment {
 	private Belief belief;
 	private String userComment;
 	
+	/**
+	 * 
+	 * @param user
+	 * @param belief
+	 * @param userComment
+	 */
 	public Comment(User user, Belief belief, String userComment) {
 		this.user = user;
 		this.belief = belief;
 		this.userComment = userComment;
 	}
 	
+	/**
+	 * 
+	 * @return the user
+	 */
 	public User getUser() { return user; }
 	public void setUser(User user) {
 		this.user = user;
 	}
 	
+	/**
+	 * 
+	 * @return the belief
+	 */
 	public Belief getBelief() { return belief; }
 	public void setBelief(Belief belief) {
 		this.belief = belief;
 	}
 	
+	/**
+	 * 
+	 * @return the userComment
+	 */
 	public String getUserComment() { return userComment; }
 	public void setUserComment(String userComment) {
 		this.userComment = userComment;

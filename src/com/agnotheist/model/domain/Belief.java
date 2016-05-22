@@ -5,6 +5,12 @@ public class Belief {
 	private String beliefStatement;
 	private User user;
 	
+	/**
+	 * 
+	 * @param religion
+	 * @param beliefStatement
+	 * @param user
+	 */
 	public Belief(String religion, String beliefStatement, 
 			User user) {
 		super();
@@ -13,16 +19,28 @@ public class Belief {
 		this.user = user;
 	}
 	
+	/**
+	 * 
+	 * @return the religion
+	 */
 	public String getReligion() { return religion; }
 	public void setReligion(String religion) {
 		this.religion = religion;
 	}
 	
+	/**
+	 * 
+	 * @return the beliefStatement
+	 */
 	public String getBeliefStatement() { return beliefStatement; }
 	public void setBeliefStatement(String beliefStatement) {
 		this.beliefStatement = beliefStatement;
 	}
 	
+	/**
+	 * 
+	 * @return the user
+	 */
 	public User getUser() { return user; }
 	public void setUser(User user) {
 		this.user = user;
