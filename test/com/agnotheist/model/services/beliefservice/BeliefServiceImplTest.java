@@ -26,10 +26,16 @@ public class BeliefServiceImplTest extends TestCase {
 	}
 
 	public final void testCreateBelief() throws CreateBeliefException {
+		try {
 		IBeliefService beliefService = serviceFactory.getBeliefService();
 		
 		assertTrue(beliefService.createBelief("Catholic", "Stealing is bad", user));
 		System.out.println("testCreateBelief PASSED");
+		
+		} catch (CreateBeliefException cbe){
+			cbe.printStackTrace();
+			fail("CreateBeliefException");
+		}
 	}
 	
 	public final void testCreateBeliefWithNullBelief() throws CreateBeliefException {

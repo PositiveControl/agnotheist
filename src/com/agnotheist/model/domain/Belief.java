@@ -1,6 +1,12 @@
 package com.agnotheist.model.domain;
 
-public class Belief {
+import java.io.Serializable;
+
+public class Belief implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7506977233948036010L;
 	private String religion;
 	private String beliefStatement;
 	private User user;

@@ -1,6 +1,12 @@
 package com.agnotheist.model.domain;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8108418098342156774L;
 	private String firstName;
 	private String lastName;
 	private String emailAddress;
