@@ -2,6 +2,7 @@ package com.agnotheist.model.services.beliefservice;
 
 import junit.framework.TestCase;
 import com.agnotheist.model.domain.User;
+import com.agnotheist.model.services.exception.CreateBeliefException;
 import com.agnotheist.model.services.factory.ServiceFactory;
 
 public class BeliefServiceImplTest extends TestCase {
@@ -24,7 +25,7 @@ public class BeliefServiceImplTest extends TestCase {
 				);
 	}
 
-	public final void testCreateBelief() {
+	public final void testCreateBelief() throws CreateBeliefException {
 		IBeliefService beliefService = serviceFactory.getBeliefService();
 		
 		assertTrue(beliefService.createBelief("Catholic", "Stealing is bad", user));
