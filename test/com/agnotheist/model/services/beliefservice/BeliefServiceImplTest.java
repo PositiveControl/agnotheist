@@ -31,5 +31,26 @@ public class BeliefServiceImplTest extends TestCase {
 		assertTrue(beliefService.createBelief("Catholic", "Stealing is bad", user));
 		System.out.println("testCreateBelief PASSED");
 	}
+	
+	public final void testCreateBeliefWithNullBelief() throws CreateBeliefException {
+		IBeliefService beliefService = serviceFactory.getBeliefService();
+		
+		assertFalse(beliefService.createBelief(null, "Stealing is bad", user));
+		System.out.println("testCreateBeliefWithNullBelief PASSED");
+	}
+	
+	public final void testCreateBeliefWithNullBeliefStatement() throws CreateBeliefException {
+		IBeliefService beliefService = serviceFactory.getBeliefService();
+		
+		assertFalse(beliefService.createBelief("Catholic", null, user));
+		System.out.println("testCreateBeliefWithNullBeliefStatement PASSED");
+	}
+	
+	public final void testCreateBeliefWithNullUser() throws CreateBeliefException {
+		IBeliefService beliefService = serviceFactory.getBeliefService();
+		
+		assertFalse(beliefService.createBelief("Catholic", "Stealing is bad", null));
+		System.out.println("testCreateBeliefWithNullUser PASSED");
+	}
 
 }
