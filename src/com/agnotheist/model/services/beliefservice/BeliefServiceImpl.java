@@ -19,6 +19,7 @@ public class BeliefServiceImpl implements IBeliefService {
 			boolean isValid = false;
 			ObjectInputStream input = null;
 			
+			
 			try {
 				ObjectOutputStream output = new ObjectOutputStream(
 						new FileOutputStream("CreatedBelief.out")
