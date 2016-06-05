@@ -44,6 +44,10 @@ public class Comment {
 		this.userComment = userComment;
 	}
 	
+	/**
+	 * 
+	 * @return boolean
+	 */
 	public boolean validate() {
 		if (user == null) return false;
 		if (belief == null) return false;
@@ -52,6 +56,9 @@ public class Comment {
 		return true;
 	}
 	
+	/**
+	 * @return boolean if objects are equal
+	 */
 	@Override
 	public boolean equals(Object object) {
 		if (this == object) return true;
@@ -76,6 +83,9 @@ public class Comment {
 		return true;
 	}
 	
+	/**
+	 * @return hashCode
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 97;
@@ -91,6 +101,9 @@ public class Comment {
 		
 	}
 	
+	/**
+	 * @return string of Comment object
+	 */
 	@Override
 	public String toString() {
 		return "Comment [belief=" + belief + ", " + "userComment=" 

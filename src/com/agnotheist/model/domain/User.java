@@ -90,6 +90,10 @@ public class User implements Serializable{
 		this.address = address;
 	}
 	
+	/**
+	 * 
+	 * @return boolean
+	 */
 	public boolean validate() {
 		if (firstName == null) return false;
 		if (lastName == null) return false;
@@ -101,6 +105,9 @@ public class User implements Serializable{
 		return true;
 	}
 	
+	/**
+	 * return boolean if objects are equal
+	 */
 	@Override
 	public boolean equals(Object object) {
 		if (this == object) return true;
@@ -137,6 +144,10 @@ public class User implements Serializable{
 		return true;
 	}
 	
+	/**
+	 * @return hashCode
+	 */
+	
 	@Override
 	public int hashCode() {
 		final int prime = 97;
@@ -155,6 +166,9 @@ public class User implements Serializable{
 		
 	}
 	
+	/**
+	 * return string of User object
+	 */
 	@Override
 	public String toString() {
 		return "User [lastName=" + lastName + ", firstName=" + firstName

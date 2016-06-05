@@ -1,25 +1,27 @@
-package com.agnotheist.model.services.factory;
+package com.agnotheist.model.business.factory;
 
-import static org.junit.Assert.*;
+import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.agnotheist.model.services.factory.ServiceFactory;
-import com.agnotheist.model.services.beliefservice.IBeliefService;
 import com.agnotheist.model.business.exception.ServiceLoadException;
 import com.agnotheist.model.services.beliefservice.BeliefServiceImpl;
+import com.agnotheist.model.services.beliefservice.IBeliefService;
+import com.agnotheist.model.services.factory.ServiceFactory;
 
-public class ServiceFactoryTest {
-	
+public class ServiceFactoryTest extends TestCase {
 	ServiceFactory serviceFactory;
 	
 	@Before
 	public void setUp() throws Exception {
 		serviceFactory = ServiceFactory.getInstance();
-		
 	}
 	
 	@Test
+	public void testGetInstance() {
+		assertNotNull(serviceFactory);
+	}
+	
 	public void testGetBeliefService() {
 		IBeliefService beliefService;
 		try {

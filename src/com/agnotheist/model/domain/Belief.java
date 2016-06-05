@@ -52,6 +52,10 @@ public class Belief implements Serializable {
 		this.user = user;
 	}
 	
+	/**
+	 * 
+	 * @return boolean
+	 */
 	public boolean validate() {
 		if (religion == null) return false;
 		if (beliefStatement == null) return false;
@@ -60,6 +64,9 @@ public class Belief implements Serializable {
 		return true;
 	}
 	
+	/**
+	 * @return boolean if objects are equal
+	 */
 	@Override
 	public boolean equals(Object object) {
 		if (this == object) return true;
@@ -84,6 +91,9 @@ public class Belief implements Serializable {
 		return true;
 	}
 	
+	/**
+	 * @return hashCode
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 97;
@@ -97,6 +107,9 @@ public class Belief implements Serializable {
 		
 	}
 	
+	/**
+	 * @return string of Belief object
+	 */
 	@Override
 	public String toString() {
 		return "Belief [religion=" + religion + ", " + "beliefStatement=" 
