@@ -7,25 +7,61 @@ import com.agnotheist.model.services.factory.ServiceFactory;
 import com.agnotheist.model.business.exception.ServiceLoadException;
 import com.agnotheist.model.domain.User;
 
-public class BeliefMgr {
-	public boolean create(String belief, String beliefStatement, User user) throws 
-		ServiceLoadException, CreateBeliefException {
+public class BeliefMgr extends ManagerSuperType {
+	
+	private static BeliefMgr _instance;
+	
+	private BeliefMgr() {
 		
+	}
+	
+	public static synchronized BeliefMgr getInstance() {
+		if (_instance == null) {
+			_instance = new BeliefMgr();
+		}
+		return _instance;
+	}
+	
+	@Override
+	/**
+	 * 
+	 */
+	public boolean performAction(String commandString, String belief, String beliefStatement, User user) {
+		boolean action = false;
+		
+		if (commandString.equals("CreateBelief")) {
+			action = create(IBeliefService.NAME, belief, beliefStatement, user);
+		}
+		return action;
+	}
+	
+	/**
+	 * 
+	 * @param command
+	 * @param belief
+	 * @param beliefStatement
+	 * @param user
+	 * @return boolean
+	 */
+	public boolean create(String command, String belief, String beliefStatement, User user) {
+		boolean created = false;
 		if (belief != null && beliefStatement != null && user != null) {
 			ServiceFactory svcFactory = ServiceFactory.getInstance();
-			
-			IBeliefService beliefService = (IBeliefService)svcFactory.getService(IBeliefService.NAME);
+			IBeliefService iBeliefService;
 			
 			try {
-				beliefService.createBelief(belief, beliefStatement, user);
-				System.out.println(user);
-				return true;
+				iBeliefService = (IBeliefService) svcFactory.getService(command);
+				created = iBeliefService.createBelief(belief, beliefStatement, user);
+				return created;
+			} catch (ServiceLoadException sle) {
+				System.out.println("BeliefMgr::create failed");
+				return created;
 			} catch(CreateBeliefException cbe) {
-				System.out.println(cbe);
-				return false;
+				System.out.println("BeliefMgr::create failed");
+				return created;
 			}
 		} else {
-			return false;
+			return created;
 		}
 	}
 }

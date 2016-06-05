@@ -8,39 +8,40 @@ import com.agnotheist.model.domain.User;
 import com.agnotheist.model.services.exception.CreateBeliefException;
 
 public class BeliefMgrTest extends TestCase {
+	
+	private BeliefMgr beliefMgr;
+	private User user;
+	
+	protected void setUp() throws Exception {
+		super.setUp();
+		beliefMgr = BeliefMgr.getInstance();
+		user = new User("Joe", "Doe", "test@example.com", "123", "abc", "123 Main St.");
+	}
 
 	@Test
 	public void testCreate() throws ServiceLoadException, CreateBeliefException {
-		User user = new User("Joe", "Doe", "test@example.com", "123", "abc", "123 Main St.");
-		BeliefMgr beliefMgr = new BeliefMgr();
-		
-		assertTrue(beliefMgr.create("Lutheran", "Pray Daily", user));
+		boolean action = beliefMgr.performAction("CreateBelief", "Lutheran", "Pray Daily", user);
+		assertTrue(action);
 	}
 	
 	public void testCreateFailNoArguments() throws ServiceLoadException, CreateBeliefException {
-		BeliefMgr beliefMgr = new BeliefMgr();
-		
-		assertFalse(beliefMgr.create(null, null, null));
+		boolean action = beliefMgr.performAction("CreateBelief", null, null, null);
+		assertFalse(action);
 	}
 	
 	public void testCreateFailNoBelief() throws ServiceLoadException, CreateBeliefException {
-		User user = new User("Joe", "Doe", "test@example.com", "123", "abc", "123 Main St.");
-		BeliefMgr beliefMgr = new BeliefMgr();
-		
-		assertFalse(beliefMgr.create(null, "Pray Daily", user));
+		boolean action = beliefMgr.performAction("CreateBelief", null, "Pray Daily", user);
+		assertFalse(action);
 	}
 	
 	public void testCreateFailNoBeliefStatement() 
 			throws ServiceLoadException, CreateBeliefException {
-		User user = new User("Joe", "Doe", "test@example.com", "123", "abc", "123 Main St.");
-		BeliefMgr beliefMgr = new BeliefMgr();
-		
-		assertFalse(beliefMgr.create("Lutheran", null, user));
+		boolean action = beliefMgr.performAction("CreateBelief", "Lutheran", null, user);
+		assertFalse(action);
 	}
 	
 	public void testCreateFailNoUser() throws ServiceLoadException, CreateBeliefException {		
-		BeliefMgr beliefMgr = new BeliefMgr();
-		
-		assertFalse(beliefMgr.create("Lutheran", "Pray Daily", null));
+		boolean action = beliefMgr.performAction("CreateBelief", "Lutheran", "Pray Daily", null);
+		assertFalse(action);
 	}
 }
