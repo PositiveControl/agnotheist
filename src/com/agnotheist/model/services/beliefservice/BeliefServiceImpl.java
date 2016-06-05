@@ -18,19 +18,17 @@ public class BeliefServiceImpl implements IBeliefService {
 		throws CreateBeliefException {
 			boolean isValid = false;
 			ObjectInputStream input = null;
+			ObjectOutputStream output = null;
 			
 			
 			try {
-				ObjectOutputStream output = new ObjectOutputStream(
+				output = new ObjectOutputStream(
 						new FileOutputStream("CreatedBelief.out")
 						);
 				output.writeObject(user);
-				output.flush();
-				output.close();
 				
 				input = new ObjectInputStream(new FileInputStream("CreatedBelief.out"));
 				User savedUser = (User) input.readObject();
-				input.close();
 				User inUser = user;
 				
 				if (user != null && savedUser.equals(inUser)) {
@@ -63,6 +61,8 @@ public class BeliefServiceImpl implements IBeliefService {
 			} finally {
 				if (input != null) {
 					try {
+						output.flush();
+						output.close();
 						input.close();
 					} catch (IOException e) {
 						e.printStackTrace();

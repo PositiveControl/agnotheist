@@ -34,7 +34,7 @@ public class BeliefMgr extends ManagerSuperType {
 		}
 		return action;
 	}
-	
+
 	/**
 	 * 
 	 * @param command
