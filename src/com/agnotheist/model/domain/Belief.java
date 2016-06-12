@@ -17,6 +17,11 @@ public class Belief implements Serializable {
 	 * @param beliefStatement
 	 * @param user
 	 */
+	
+	public Belief() {
+		super();
+	}
+	
 	public Belief(String religion, String beliefStatement, 
 			User user) {
 		super();

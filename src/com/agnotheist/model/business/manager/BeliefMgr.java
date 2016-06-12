@@ -11,7 +11,7 @@ public class BeliefMgr extends ManagerSuperType {
 	
 	private static BeliefMgr _instance;
 	
-	private BeliefMgr() {
+	public BeliefMgr() {
 		
 	}
 	
