@@ -52,16 +52,12 @@ public class BeliefMgr extends ManagerSuperType {
 			try {
 				iBeliefService = (IBeliefService) svcFactory.getService(command);
 				created = iBeliefService.createBelief(belief, beliefStatement, user);
-				return created;
 			} catch (ServiceLoadException sle) {
 				System.out.println("BeliefMgr::create failed");
-				return created;
 			} catch(CreateBeliefException cbe) {
 				System.out.println("BeliefMgr::create failed");
-				return created;
 			}
-		} else {
-			return created;
 		}
+		return created;
 	}
 }

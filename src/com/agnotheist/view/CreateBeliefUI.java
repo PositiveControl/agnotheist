@@ -22,7 +22,6 @@ public class CreateBeliefUI extends JFrame implements ActionListener {
 	/**
 	 * UI data components separated by grouping
 	 */
-	
 	// Belief label + text fields
 	private JLabel beliefLabel = new JLabel("Belief");
 	private JTextField beliefText = new JTextField(20);
