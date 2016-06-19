@@ -19,7 +19,7 @@ public abstract class ManagerSuperType {
 	}
 	
 	public abstract boolean performAction(String commandString, String belief, String beliefStatement, User user);
-	public abstract boolean performAction(String commandString, User user, Belief belief, String comment);
+	public abstract boolean performPostAction(String commandString, User user, Belief belief, String comment);
 	/**
 	 * 
 	 * @throws PropertyFileNotFoundException

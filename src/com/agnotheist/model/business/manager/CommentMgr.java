@@ -27,7 +27,7 @@ public class CommentMgr extends ManagerSuperType {
 	/**
 	 * 
 	 */
-	public boolean performAction(String commandString, User user, Belief belief, String comment) {
+	public boolean performPostAction(String commandString, User user, Belief belief, String comment) {
 		boolean action = false;
 		
 		if (commandString.equals("PostComment")) {

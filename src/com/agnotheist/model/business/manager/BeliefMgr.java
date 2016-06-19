@@ -63,7 +63,7 @@ public class BeliefMgr extends ManagerSuperType {
 	}
 
 	@Override
-	public boolean performAction(String commandString, User user, Belief belief, String comment) {
+	public boolean performPostAction(String commandString, User user, Belief belief, String comment) {
 		// TODO Auto-generated method stub
 		return false;
 	}
