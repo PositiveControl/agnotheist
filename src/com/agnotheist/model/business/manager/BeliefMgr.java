@@ -5,6 +5,7 @@ import com.agnotheist.model.services.exception.CreateBeliefException;
 import com.agnotheist.model.services.factory.ServiceFactory;
 
 import com.agnotheist.model.business.exception.ServiceLoadException;
+import com.agnotheist.model.domain.Belief;
 import com.agnotheist.model.domain.User;
 
 public class BeliefMgr extends ManagerSuperType {
@@ -59,5 +60,11 @@ public class BeliefMgr extends ManagerSuperType {
 			}
 		}
 		return created;
+	}
+
+	@Override
+	public boolean performAction(String commandString, User user, Belief belief, String comment) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

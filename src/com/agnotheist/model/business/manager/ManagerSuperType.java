@@ -1,6 +1,7 @@
 package com.agnotheist.model.business.manager;
 
 import com.agnotheist.model.business.exception.PropertyFileNotFoundException;
+import com.agnotheist.model.domain.Belief;
 import com.agnotheist.model.domain.User;
 import com.agnotheist.model.services.manager.PropertyManager;
 
@@ -18,7 +19,7 @@ public abstract class ManagerSuperType {
 	}
 	
 	public abstract boolean performAction(String commandString, String belief, String beliefStatement, User user);
-	
+	public abstract boolean performAction(String commandString, User user, Belief belief, String comment);
 	/**
 	 * 
 	 * @throws PropertyFileNotFoundException

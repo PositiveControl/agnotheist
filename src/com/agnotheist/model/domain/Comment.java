@@ -11,6 +11,9 @@ public class Comment implements Serializable {
 	private Belief belief;
 	private String userComment;
 	
+	public Comment() {
+		super();
+	}
 	/**
 	 * 
 	 * @param user

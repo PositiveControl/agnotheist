@@ -14,6 +14,11 @@ public class User implements Serializable{
 	private String password;
 	private String address;
 	
+	
+	public User() {
+		super();
+	}
+	
 	/**
 	 * User
 	 * 
