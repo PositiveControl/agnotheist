@@ -5,10 +5,11 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 import com.agnotheist.model.services.beliefservice.BeliefServiceImplTest;
+import com.agnotheist.model.services.commentservice.CommentServiceImplTest;
 import com.agnotheist.model.services.factory.ServiceFactoryTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({ServiceFactoryTest.class, BeliefServiceImplTest.class})
+@SuiteClasses({ServiceFactoryTest.class, BeliefServiceImplTest.class, CommentServiceImplTest.class})
 public class AllServicesTests {
 
 }
