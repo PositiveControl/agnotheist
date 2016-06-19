@@ -1,6 +1,12 @@
 package com.agnotheist.model.domain;
 
-public class Comment {
+import java.io.Serializable;
+
+public class Comment implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2459344794600235478L;
 	private User user;
 	private Belief belief;
 	private String userComment;
