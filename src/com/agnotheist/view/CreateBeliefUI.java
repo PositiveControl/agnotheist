@@ -80,7 +80,7 @@ public class CreateBeliefUI extends JFrame implements ActionListener {
 						belief.setBeliefStatement(statementText.getText());
 						belief.setUser(null); // Need to implement create user
 						BeliefMgr beliefMgr = new BeliefMgr();
-						beliefMgr.create(
+						beliefMgr.performAction(
 								"CreateBelief", 
 								belief.getReligion(), 
 								belief.getBeliefStatement(), 

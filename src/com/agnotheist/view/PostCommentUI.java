@@ -75,7 +75,7 @@ public class PostCommentUI extends JFrame implements ActionListener {
 						comment.setBelief(new Belief());
 						comment.setUserComment(commentText.getText());
 						CommentMgr commentMgr = new CommentMgr();
-						commentMgr.create(
+						commentMgr.performPostAction(
 								"PostComment", 
 								comment.getUser(), 
 								comment.getBelief(), 
