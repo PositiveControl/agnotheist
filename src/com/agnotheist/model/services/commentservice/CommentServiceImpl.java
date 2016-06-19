@@ -12,7 +12,6 @@ import java.io.ObjectOutputStream;
 import com.agnotheist.model.domain.Belief;
 import com.agnotheist.model.domain.Comment;
 import com.agnotheist.model.domain.User;
-import com.agnotheist.model.services.exception.CreateBeliefException;
 import com.agnotheist.model.services.exception.PostCommentException;
 
 /**
@@ -32,22 +31,33 @@ public class CommentServiceImpl implements ICommentService {
 			output = new ObjectOutputStream(
 					new FileOutputStream("CreatedComment.out")
 					);
-			
+			Comment newComment = new Comment(user, belief, comment);
+
 			
 			input = new ObjectInputStream(new FileInputStream("CreatedComment.out"));
-			Comment savedComment = (Comment) input.readObject();
-			
+//			Comment savedComment = (Comment) input.readObject();
+//			Comment inComment = new Comment(user, belief, comment);
+		
 			
 			if (user != null && belief != null && comment != null) {
-				Comment newComment = new Comment(user, belief, comment);
-				output.writeObject(newComment);
 				isValid = true;
+				
+				output.writeObject(newComment);
+				
+				Comment savedComment = (Comment) input.readObject();
+				Comment inComment = new Comment(user, belief, comment);
+				
+				if (savedComment.equals(inComment)) {
+					System.out.println("YOOOO");
+				}
+				
 			} else { 
 				if (user == null) {
 					isValid = false;
 					throw new PostCommentException("Null or invalid user passed to CommentServiceImpl::postComment");
 				} 
 				if (belief == null) {
+					System.out.println("HERE");
 					isValid = false;
 					throw new PostCommentException("Null or invalid belief passed to CommentServiceImpl::postComment");
 				}
@@ -74,6 +84,7 @@ public class CommentServiceImpl implements ICommentService {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+				return isValid;
 			}
 		}
 		
