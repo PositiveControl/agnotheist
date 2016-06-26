@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import com.agnotheist.model.domain.Belief;
 import com.agnotheist.model.domain.User;
 import com.agnotheist.model.services.exception.CreateBeliefException;
 
@@ -25,13 +26,14 @@ public class BeliefServiceImpl implements IBeliefService {
 				output = new ObjectOutputStream(
 						new FileOutputStream("CreatedBelief.out")
 						);
-				output.writeObject(user);
+				Belief newBelief = new Belief(belief, beliefStatement, user);
+				output.writeObject(newBelief);
 				
 				input = new ObjectInputStream(new FileInputStream("CreatedBelief.out"));
-				User savedUser = (User) input.readObject();
-				User inUser = user;
+				Belief savedBelief = (Belief) input.readObject();
+				Belief inBelief = newBelief;
 				
-				if (user != null && savedUser.equals(inUser)) {
+				if (user != null && savedBelief.equals(inBelief)) {
 					System.out.println(belief);
 					if (belief != null) {
 						if (beliefStatement != null) {
