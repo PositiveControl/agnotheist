@@ -55,15 +55,36 @@ public class PostCommentUI extends JFrame implements ActionListener {
 	public void run() {
 		// creating the layout by adding components to the container
 		Container rootContainer = getContentPane();
-		BorderLayout layout = new BorderLayout(5,5);
+		rootContainer.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 		
-		rootContainer.setLayout(layout);
-		rootContainer.add(new JLabel("Post a comment"), BorderLayout.NORTH);
-		rootContainer.add(commentLabel, BorderLayout.WEST);
-		rootContainer.add(commentText, BorderLayout.EAST);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.gridy = 0;
+		rootContainer.add(commentLabel, c);
 		
-		rootContainer.add(cancelButton, BorderLayout.SOUTH);
-		rootContainer.add(createButton, BorderLayout.SOUTH);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady= 20;
+		c.weightx = 0.0;
+		c.gridwidth = 4;
+		c.gridx = 1;
+		c.gridy = 1;
+		rootContainer.add(commentText, c);
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 5;
+		c.gridwidth = 2;
+		c.gridx = 1;
+		c.gridy = 2;
+		rootContainer.add(createButton, c);
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 5;
+		c.gridwidth = 2;
+		c.gridx = 1;
+		c.gridy = 3;
+		rootContainer.add(cancelButton, c);
 		
 		// Adding an action for when the create button is pressed
 		createButton.addActionListener(
@@ -86,9 +107,113 @@ public class PostCommentUI extends JFrame implements ActionListener {
 				}
 			);
 		
+		cancelButton.addActionListener(
+				new ActionListener () {
+					public void actionPerformed (ActionEvent event) 
+					{
+						setVisible(false);	
+					}
+				}
+			);
+		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();
 		setVisible(true);
+	}
+	
+	
+	public void run(String string, Belief belief) {
+		// creating the layout by adding components to the container
+		Container rootContainer = getContentPane();
+		rootContainer.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.gridy = 0;
+		rootContainer.add(commentLabel, c);
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady= 20;
+		c.weightx = 0.0;
+		c.gridwidth = 2;
+		c.gridx = 1;
+		c.gridy = 1;
+		rootContainer.add(commentText, c);
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 5;
+		c.gridwidth = 2;
+		c.gridx = 1;
+		c.gridy = 2;
+		rootContainer.add(createButton, c);
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 5;
+		c.gridwidth = 2;
+		c.gridx = 1;
+		c.gridy = 3;
+		rootContainer.add(cancelButton, c);
+		
+		// Adding an action for when the create button is pressed
+		createButton.addActionListener(
+				new ActionListener () {
+					public void actionPerformed (ActionEvent event) 
+					{
+						Comment comment = new Comment();
+						comment.setUser(belief.getUser());
+						comment.setBelief(belief);
+						comment.setUserComment(commentText.getText());
+						CommentMgr commentMgr = new CommentMgr();
+						Boolean response = commentMgr.performPostAction(
+								"PostComment", 
+								comment.getUser(), 
+								comment.getBelief(), 
+								comment.getUserComment()
+						);
+						
+						if (response == true) { 
+							System.out.println(belief);
+							showSuccessMessage("Successfully created comment for " + belief.getReligion() + " belief.");
+							setVisible(false);
+						} else {
+							showFailureMessage("Failed to create comment for " + belief.getReligion() + " belief.");
+							CreateBeliefUI createBelief = new CreateBeliefUI("New Belief");
+							createBelief.run();
+							setVisible(false);
+						}
+						
+					}
+				}
+			);
+		
+		cancelButton.addActionListener(
+				new ActionListener () {
+					public void actionPerformed (ActionEvent event) 
+					{
+						setVisible(false);	
+					}
+				}
+			);
+		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		pack();
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static void showSuccessMessage(String string) {
+		MessageDialog msgDlg = new MessageDialog("Success", string);
+		Utils.centerWindow(msgDlg);
+		msgDlg.setModal(true);
+		msgDlg.show();
+	}
+	
+	public static void showFailureMessage(String string) {
+		MessageDialog msgDlg = new MessageDialog("Failure", string);
+		Utils.centerWindow(msgDlg);
+		msgDlg.setModal(true);
+		msgDlg.show();
 	}
 	
 	@Override

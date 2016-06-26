@@ -35,8 +35,6 @@ public class CreateBeliefUI extends JFrame implements ActionListener {
 	private JButton createButton = new JButton("Create");
 	private JButton cancelButton = new JButton("Cancel");
 	
-	private JButton commentButton = new JButton("Comment");
-	
 	private User user = new User("John", "Doe", "test@example.com", "303-333-3333", "password", "123 Main St.");
 	
 	/**
@@ -107,13 +105,6 @@ public class CreateBeliefUI extends JFrame implements ActionListener {
 		c.gridy = 5;
 		rootContainer.add(cancelButton, c);
 		
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.ipady = 5;
-		c.gridwidth = 2;
-		c.gridx = 1;
-		c.gridy = 6;
-		rootContainer.add(commentButton, c);
-		
 		// Adding an action for when the create button is pressed
 		createButton.addActionListener(
 				new ActionListener () {
@@ -124,13 +115,29 @@ public class CreateBeliefUI extends JFrame implements ActionListener {
 						belief.setBeliefStatement(statementText.getText());
 						belief.setUser(user); // Need to implement create user
 						BeliefMgr beliefMgr = new BeliefMgr();
-						beliefMgr.performAction(
-								"CreateBelief", 
-								belief.getReligion(), 
-								belief.getBeliefStatement(), 
-								belief.getUser()
-						);
-						showSuccessMessage("Successfully created Belief");
+						Boolean response = beliefMgr.performAction("CreateBelief", belief.getReligion(), belief.getBeliefStatement(), belief.getUser());
+						
+						if (response == true) { 
+							showSuccessMessage("Successfully created Belief");
+							PostCommentUI postComment = new PostCommentUI("New Comment for " + belief.getReligion());
+							postComment.run(belief.getReligion(), belief);
+							postComment.setVisible(true);
+						} else {
+							showFailureMessage("Failed to create Beleif");
+							setVisible(false);
+							CreateBeliefUI createBelief = new CreateBeliefUI("New Belief");
+							createBelief.run();
+						}
+						
+					}
+				}
+			);
+		
+		cancelButton.addActionListener(
+				new ActionListener () {
+					public void actionPerformed (ActionEvent event) 
+					{
+						setVisible(false);	
 					}
 				}
 			);
@@ -143,6 +150,13 @@ public class CreateBeliefUI extends JFrame implements ActionListener {
 	@SuppressWarnings("deprecation")
 	public static void showSuccessMessage(String string) {
 		MessageDialog msgDlg = new MessageDialog("Success", string);
+		Utils.centerWindow(msgDlg);
+		msgDlg.setModal(true);
+		msgDlg.show();
+	}
+	
+	public static void showFailureMessage(String string) {
+		MessageDialog msgDlg = new MessageDialog("Failure", string);
 		Utils.centerWindow(msgDlg);
 		msgDlg.setModal(true);
 		msgDlg.show();
