@@ -6,6 +6,7 @@ package com.agnotheist.view;
 import javax.swing.JFrame;
 import com.agnotheist.model.business.manager.BeliefMgr;
 import com.agnotheist.model.domain.Belief;
+import com.agnotheist.model.domain.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,6 +35,10 @@ public class CreateBeliefUI extends JFrame implements ActionListener {
 	private JButton createButton = new JButton("Create");
 	private JButton cancelButton = new JButton("Cancel");
 	
+	private JButton commentButton = new JButton("Comment");
+	
+	private User user = new User("John", "Doe", "test@example.com", "303-333-3333", "password", "123 Main St.");
+	
 	/**
 	 * 
 	 * @param String name
@@ -57,18 +62,57 @@ public class CreateBeliefUI extends JFrame implements ActionListener {
 	public void run() {
 		// creating the layout by adding components to the container
 		Container rootContainer = getContentPane();
-		BorderLayout layout = new BorderLayout(5,5);
+		rootContainer.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 		
-		rootContainer.setLayout(layout);
-		rootContainer.add(new JLabel("Create New Belief"), BorderLayout.NORTH);
-		rootContainer.add(beliefLabel, BorderLayout.WEST);
-		rootContainer.add(beliefText, BorderLayout.WEST);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.gridy = 0;
+		rootContainer.add(beliefLabel, c);
 		
-		rootContainer.add(statementLabel, BorderLayout.EAST);
-		rootContainer.add(statementText, BorderLayout.EAST);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady= 20;
+		c.weightx = 0.0;
+		c.gridwidth = 2;
+		c.gridx = 1;
+		c.gridy = 1;
+		rootContainer.add(beliefText, c);
 		
-		rootContainer.add(cancelButton, BorderLayout.SOUTH);
-		rootContainer.add(createButton, BorderLayout.SOUTH);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 2.0;
+		c.gridx = 0;
+		c.gridy = 2;
+		rootContainer.add(statementLabel, c);
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady= 20;
+		c.weightx = 0;
+		c.gridwidth = 2;
+		c.gridx = 1;
+		c.gridy = 3;
+		rootContainer.add(statementText, c);
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 5;
+		c.gridwidth = 2;
+		c.gridx = 1;
+		c.gridy = 4;
+		rootContainer.add(createButton, c);
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 5;
+		c.gridwidth = 2;
+		c.gridx = 1;
+		c.gridy = 5;
+		rootContainer.add(cancelButton, c);
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 5;
+		c.gridwidth = 2;
+		c.gridx = 1;
+		c.gridy = 6;
+		rootContainer.add(commentButton, c);
 		
 		// Adding an action for when the create button is pressed
 		createButton.addActionListener(
@@ -78,7 +122,7 @@ public class CreateBeliefUI extends JFrame implements ActionListener {
 						Belief belief = new Belief();
 						belief.setReligion(beliefText.getText());
 						belief.setBeliefStatement(statementText.getText());
-						belief.setUser(null); // Need to implement create user
+						belief.setUser(user); // Need to implement create user
 						BeliefMgr beliefMgr = new BeliefMgr();
 						beliefMgr.performAction(
 								"CreateBelief", 
@@ -86,7 +130,7 @@ public class CreateBeliefUI extends JFrame implements ActionListener {
 								belief.getBeliefStatement(), 
 								belief.getUser()
 						);
-						
+						showSuccessMessage("Successfully created Belief");
 					}
 				}
 			);
@@ -96,6 +140,13 @@ public class CreateBeliefUI extends JFrame implements ActionListener {
 		setVisible(true);
 	}
 	
+	@SuppressWarnings("deprecation")
+	public static void showSuccessMessage(String string) {
+		MessageDialog msgDlg = new MessageDialog("Success", string);
+		Utils.centerWindow(msgDlg);
+		msgDlg.setModal(true);
+		msgDlg.show();
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub

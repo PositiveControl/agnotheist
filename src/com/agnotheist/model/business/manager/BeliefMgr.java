@@ -49,7 +49,7 @@ public class BeliefMgr extends ManagerSuperType {
 		if (belief != null && beliefStatement != null && user != null) {
 			ServiceFactory svcFactory = ServiceFactory.getInstance();
 			IBeliefService iBeliefService;
-			
+
 			try {
 				iBeliefService = (IBeliefService) svcFactory.getService(command);
 				created = iBeliefService.createBelief(belief, beliefStatement, user);
