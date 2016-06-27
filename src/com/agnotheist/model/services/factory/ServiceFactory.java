@@ -45,7 +45,7 @@ public class ServiceFactory {
 	private String getImplName(String serviceName) throws Exception {
 		java.util.Properties props = new java.util.Properties();
 		
-		String propertyFileLocation = System.getProperty("prop_location");
+		String propertyFileLocation = "config/application.properties";
 		
 		System.out.println(propertyFileLocation);
 		

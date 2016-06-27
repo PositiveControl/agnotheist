@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 
-<project name="FleetRental" basedir=".">
+<project name="Agnotheist" basedir=".">
 	<property name="src.dir" value="${basedir}/src"/>
-	<property name="bin.dir" value="${basedir}/classes"/>
+	<property name="bin.dir" value="${basedir}/bin"/>
 	<property name="build.dir" value="${basedir}/build"/>
 	<property name="config.dir" value="${basedir}/config"/>
 	<property name="lib.dir" value="${basedir}/lib"/>
@@ -28,7 +28,7 @@
          destdir="${bin.dir}">
          <classpath refid="master-classpath"/>
   </javac>
-	</target>
+</target>
  
  <!-- Build Jar -->	
 	<target name="buildjar" depends="compile">

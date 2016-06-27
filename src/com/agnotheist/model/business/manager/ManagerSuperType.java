@@ -25,8 +25,10 @@ public abstract class ManagerSuperType {
 	 * @throws PropertyFileNotFoundException
 	 */
 	public static void loadProperties () throws PropertyFileNotFoundException {
-		String propertyFileLocation = System.getProperty("prop_location");
+		
+		String propertyFileLocation = "config/application.properties";
 		if (propertyFileLocation != null) {
+			System.out.println(propertyFileLocation);
 			PropertyManager.loadProperties(propertyFileLocation);
 		}
 	}
